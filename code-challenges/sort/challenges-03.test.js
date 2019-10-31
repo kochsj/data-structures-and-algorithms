@@ -159,7 +159,18 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  arr.sort(function(a, b){
+    let aLName = a.lastName;
+    let bLName = b.lastName;
+    if(aLName < bLName){
+      return -1;
+    } else if(aLName > bLName){
+      return 1;
+    } else {
+      return 0;
+    }
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
