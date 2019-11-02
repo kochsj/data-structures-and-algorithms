@@ -1,5 +1,5 @@
 'use strict';
-
+let regex;
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -13,7 +13,6 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  let regex;
   regex = /[0-9]/g;
   return regex.test(input);
 };
@@ -27,7 +26,6 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  let regex;
   regex = /[A-Z]+[a-z]+/gm;
   let match = str.match(regex);
   if(Array.isArray(match)){
@@ -45,7 +43,6 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   let str = JSON.stringify(arr);
-  let regex;
   regex = /(?<!\s)[A-J]+[a-z]+/gm;
   let match = str.match(regex);
   if(Array.isArray(match)){
@@ -68,7 +65,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+    regex = /([O|o]ct)$|((?:^|\W)[O|o]ctober)/gm
+    return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +96,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+ var Value
 };
 
 /* ------------------------------------------------------------------------------------------------
