@@ -114,7 +114,7 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
-  regex = /\w+(ells)/;
+  regex = /\w+(ells)/g;
   return str.match(regex);
 };
 
