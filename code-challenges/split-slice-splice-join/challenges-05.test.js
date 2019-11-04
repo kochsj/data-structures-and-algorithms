@@ -15,7 +15,9 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < (str.length+1); i++){
+    result[i] = str.slice(i);
+  }
   return result;
 };
 
@@ -28,7 +30,11 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  let result =[];
+  for(let i = 0; i < arr.length; i++){
+    result[i] = arr.slice(i, (i+1));
+  }
+  return result;
 };
 
 
@@ -75,7 +81,64 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < recipe.ingredients.length; i++){
+    let temp = recipe.ingredients[i].indexOf('Gruffalo');
+    if(temp !== -1){
+      result[i] = recipe.ingredients[i].slice(temp);
+    } else {
+      let temp = recipe.ingredients[i].indexOf('oats');
+      if(temp !== -1){
+        result[i] = recipe.ingredients[i].slice(temp);
+      } else {
+        let temp = recipe.ingredients[i].indexOf('brown sugar');
+        if(temp !== -1){
+          result[i] = recipe.ingredients[i].slice(temp);
+        } else {
+          let temp = recipe.ingredients[i].indexOf('flour');
+          if(temp !== -1){
+            result[i] = recipe.ingredients[i].slice(temp);
+          } else {
+            let temp = recipe.ingredients[i].indexOf('pure maple syrup');
+            if(temp !== -1){
+              result[i] = recipe.ingredients[i].slice(temp);
+            } else {
+              let temp = recipe.ingredients[i].indexOf('chopped nuts');
+              if(temp !== -1){
+                result[i] = recipe.ingredients[i].slice(temp);
+              } else {
+                let temp = recipe.ingredients[i].indexOf('baking soda');
+                if(temp !== -1){
+                  result[i] = recipe.ingredients[i].slice(temp);
+                } else {
+                  let temp = recipe.ingredients[i].indexOf('baking powder');
+                  if(temp !== -1){
+                    result[i] = recipe.ingredients[i].slice(temp);
+                  } else {
+                    let temp = recipe.ingredients[i].indexOf('cinnamon');
+                    if(temp !== -1){
+                      result[i] = recipe.ingredients[i].slice(temp);
+                    } else {
+                      let temp = recipe.ingredients[i].indexOf('melted butter');
+                      if(temp !== -1){
+                        result[i] = recipe.ingredients[i].slice(temp);
+                      } else {
+                        let temp = recipe.ingredients[i].indexOf('fresh water');
+                        if(temp !== -1){
+                          result[i] = recipe.ingredients[i].slice(temp);
+                        } else {
+                          console.log('hello');
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   return result;
 };
 

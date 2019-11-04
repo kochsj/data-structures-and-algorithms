@@ -236,25 +236,25 @@ const sortMeetingsByDay = (arr) => {
   let fri = 'friday';
   arr.sort(function(a, b){
     if(a.dayOfWeek.toLowerCase() !== mon && b.dayOfWeek.toLowerCase() === mon){
-      return -1;
+      return 1;
     } else if(a.dayOfWeek.toLowerCase() === mon && b.dayOfWeek.toLowerCase() !== mon){
-      return 1;
+      return -1;
     } if(a.dayOfWeek.toLowerCase() !== tue && (b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
-      return -1;
+      return 1;
     } else if(a.dayOfWeek.toLowerCase() === tue && (b.dayOfWeek.toLowerCase() !== tue || b.dayOfWeek.toLowerCase() !== mon)){
-      return 1;
+      return -1;
     } else if(a.dayOfWeek.toLowerCase() !== wed && (b.dayOfWeek.toLowerCase() === wed || b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
-      return -1;
+      return 1;
     } else if(a.dayOfWeek.toLowerCase() === wed && (b.dayOfWeek.toLowerCase() === thurs || b.dayOfWeek.toLowerCase() === fri)){
-      return 1;
+      return -1;
     } else if(a.dayOfWeek.toLowerCase() !== thurs && (b.dayOfWeek.toLowerCase() === thurs || b.dayOfWeek.toLowerCase() === wed || b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
-      return -1;
+      return 1;
     } else if(a.dayOfWeek.toLowerCase() === thurs && b.dayOfWeek.toLowerCase() === fri){
-      return 1;
-    } else if(a.dayOfWeek.toLowerCase() === fri && b.dayOfWeek.toLowerCase() !== fri){
       return -1;
-    } else if(a.dayOfWeek.toLowerCase() !== fri && b.dayOfWeek.toLowerCase() === fri){
+    } else if(a.dayOfWeek.toLowerCase() === fri && b.dayOfWeek.toLowerCase() !== fri){
       return 1;
+    } else if(a.dayOfWeek.toLowerCase() !== fri && b.dayOfWeek.toLowerCase() === fri){
+      return -1;
     } else {
       return 0;
     }
