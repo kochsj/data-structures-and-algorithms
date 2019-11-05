@@ -126,7 +126,7 @@ const listFoods = (recipe) => {
                         if(temp !== -1){
                           result[i] = recipe.ingredients[i].slice(temp);
                         } else {
-                          console.log('hello');
+                          console.log('fail');
                         }
                       }
                     }
@@ -152,7 +152,20 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < recipe.ingredients.length; i++){
+    let temp = recipe.ingredients[i].split(' ');
+    temp.splice(0,2);
+    if(temp.length === 3){
+      let str = temp[0]+' '+temp[1]+' '+temp[2];
+      result.push(str);
+    } else if(temp.length === 2){
+      let str = temp[0]+' '+temp[1];
+      result.push(str);
+    } else{
+      let str = temp[0];
+      result.push(str);
+    }
+  }
   return result;
 };
 
