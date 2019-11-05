@@ -90,7 +90,8 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   let temp;
-  arr.forEach(value => {
+  let arrayValues = Object.values(arr);
+  arrayValues.forEach(value => {
     if(value.name === character){
       if((value.children).length === 0){
         temp = false;
@@ -110,7 +111,17 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let temp;
+  arr.forEach(value => {
+    if(value.name === character){
+      if((value.children).length === 0){
+        temp = false;
+      } else {
+        temp = true;
+      }
+    }
+  });
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,7 +131,15 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let total = 0;
+  arr.forEach(value => {
+    if(value.spouse === null){
+      total += 1+(value.children.length);
+    } else {
+      total += 2+(value.children.length);
+    }
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +154,20 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 
 const houseSize = (arr) => {
   const sizes = [];
-  // Solution code here...
+  let Object = function(house, members){
+    this.house = house;
+    this.members = members;
+    sizes.push(this);
+  }
+  arr.forEach(value => {
+    let total = 0;
+    if(value.spouse === null){
+      total += 1+(value.children.length);
+    } else {
+      total += 2+(value.children.length);
+    }
+    new Object(value.house, total);
+  });
   return sizes;
 };
 
