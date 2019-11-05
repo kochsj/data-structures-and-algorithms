@@ -227,7 +227,15 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  let lengthStr = str.length;
+  if(numberOfCharacters > lengthStr){
+    return '';
+  } else if(numberOfCharacters >= 0){
+    let temp = str.slice(0, (lengthStr-numberOfCharacters));
+    return temp;
+  } else {
+    return str;
+  }
 };
 
 
