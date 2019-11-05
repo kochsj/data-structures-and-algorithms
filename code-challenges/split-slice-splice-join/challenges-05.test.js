@@ -302,8 +302,56 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 const extractVowels = (str) => {
-  // Solution code here...
+  let temp = str.split('');
+  let newStr = '';
+  let vowel = [];
+  let newVowel = '';
+  for(let j = 0; j < temp.length; j++){
+    let a = temp[j].indexOf('a');
+    let e = temp[j].indexOf('e');
+    let i = temp[j].indexOf('i');
+    let o = temp[j].indexOf('o');
+    let u = temp[j].indexOf('u');
+    if(a===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(e===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(i===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(o===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(u===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }
+  }
+  for(let k = 0; k < temp.length; k++){
+    newStr += temp[k];
+  }
+  vowel.sort(function(a,b){
+    if(a < b){
+      return -1;
+    } else if(a > b){
+      return 1;
+    } else {
+      return 0
+    }
+  });
+  for(let l = 0; l < vowel.length; l++){
+    newVowel += vowel[l];
+  }
+  return [newStr, newVowel];
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
