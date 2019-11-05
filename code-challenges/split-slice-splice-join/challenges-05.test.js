@@ -126,7 +126,7 @@ const listFoods = (recipe) => {
                         if(temp !== -1){
                           result[i] = recipe.ingredients[i].slice(temp);
                         } else {
-                          console.log('hello');
+                          console.log('fail');
                         }
                       }
                     }
@@ -152,7 +152,20 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < recipe.ingredients.length; i++){
+    let temp = recipe.ingredients[i].split(' ');
+    temp.splice(0,2);
+    if(temp.length === 3){
+      let str = temp[0]+' '+temp[1]+' '+temp[2];
+      result.push(str);
+    } else if(temp.length === 2){
+      let str = temp[0]+' '+temp[1];
+      result.push(str);
+    } else{
+      let str = temp[0];
+      result.push(str);
+    }
+  }
   return result;
 };
 
@@ -168,7 +181,10 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 
 const stepActions = (recipe) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < recipe.steps.length; i++){
+    let temp = recipe.steps[i].split(' ');
+    result.push(temp.splice(0,1)[0])
+  }
   return result;
 };
 
@@ -186,7 +202,13 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-  // Solution code here...
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] % 2 === 0){
+      arr.splice(i,1);
+      i = 0;
+    }
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -205,7 +227,15 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  let lengthStr = str.length;
+  if(numberOfCharacters > lengthStr){
+    return '';
+  } else if(numberOfCharacters >= 0){
+    let temp = str.slice(0, (lengthStr-numberOfCharacters));
+    return temp;
+  } else {
+    return str;
+  }
 };
 
 
@@ -217,7 +247,10 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = (str) => {
   let total = 0;
-  // Solution code here...
+  let temp = str.split(',');
+  for(let i = 0; i < temp.length; i++){
+    total += Number(temp[i]) ;
+  }
   return total;
 };
 
@@ -231,7 +264,31 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 const removeVowels = (str) => {
-  // Solution code here...
+  let temp = str.split('');
+  let newStr = '';
+  for(let j = 0; j < temp.length; j++){
+    let a = temp[j].indexOf('a');
+    let e = temp[j].indexOf('e');
+    let i = temp[j].indexOf('i');
+    let o = temp[j].indexOf('o');
+    let u = temp[j].indexOf('u');
+    if(a===0){
+      temp.splice(j, 1);
+    }else if(e===0){
+      temp.splice(j, 1);
+    }else if(i===0){
+      temp.splice(j, 1);
+    }else if(o===0){
+      temp.splice(j, 1);
+    }else if(u===0){
+      temp.splice(j, 1);
+    }
+  }
+  for(let k = 0; k < temp.length; k++){
+    newStr += temp[k];
+  }
+  str = newStr;
+  return str;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -245,8 +302,56 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 const extractVowels = (str) => {
-  // Solution code here...
+  let temp = str.split('');
+  let newStr = '';
+  let vowel = [];
+  let newVowel = '';
+  for(let j = 0; j < temp.length; j++){
+    let a = temp[j].indexOf('a');
+    let e = temp[j].indexOf('e');
+    let i = temp[j].indexOf('i');
+    let o = temp[j].indexOf('o');
+    let u = temp[j].indexOf('u');
+    if(a===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(e===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(i===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(o===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }else if(u===0){
+      let temp2 = temp.splice(j, 1);
+      vowel.push(temp2[0]);
+      j=0;
+    }
+  }
+  for(let k = 0; k < temp.length; k++){
+    newStr += temp[k];
+  }
+  vowel.sort(function(a,b){
+    if(a < b){
+      return -1;
+    } else if(a > b){
+      return 1;
+    } else {
+      return 0
+    }
+  });
+  for(let l = 0; l < vowel.length; l++){
+    newVowel += vowel[l];
+  }
+  return [newStr, newVowel];
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS

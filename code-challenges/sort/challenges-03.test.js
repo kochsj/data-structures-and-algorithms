@@ -273,8 +273,46 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
-};
+  let mon = 'monday';
+  let tue = 'tuesday';
+  let wed = 'wednesday';
+  let thurs = 'thursday';
+  let fri = 'friday';
+  arr.sort(function(a,b){
+    if(a.dayOfWeek.toLowerCase() === b.dayOfWeek.toLowerCase() && a.start === b.start && a.end < b.end){
+      return -1;
+    } else if(a.dayOfWeek.toLowerCase() === b.dayOfWeek.toLowerCase() && a.start === b.start && a.end > b.end){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() === b.dayOfWeek.toLowerCase() && a.start < b.start){
+      return -1;
+    } else if(a.dayOfWeek.toLowerCase() === b.dayOfWeek.toLowerCase() && a.start > b.start){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() !== mon && b.dayOfWeek.toLowerCase() === mon){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() === mon && b.dayOfWeek.toLowerCase() !== mon){
+      return -1;
+    } if(a.dayOfWeek.toLowerCase() !== tue && (b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() === tue && (b.dayOfWeek.toLowerCase() !== tue || b.dayOfWeek.toLowerCase() !== mon)){
+      return -1;
+    } else if(a.dayOfWeek.toLowerCase() !== wed && (b.dayOfWeek.toLowerCase() === wed || b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() === wed && (b.dayOfWeek.toLowerCase() === thurs || b.dayOfWeek.toLowerCase() === fri)){
+      return -1;
+    } else if(a.dayOfWeek.toLowerCase() !== thurs && (b.dayOfWeek.toLowerCase() === thurs || b.dayOfWeek.toLowerCase() === wed || b.dayOfWeek.toLowerCase() === tue || b.dayOfWeek.toLowerCase() === mon)){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() === thurs && b.dayOfWeek.toLowerCase() === fri){
+      return -1;
+    } else if(a.dayOfWeek.toLowerCase() === fri && b.dayOfWeek.toLowerCase() !== fri){
+      return 1;
+    } else if(a.dayOfWeek.toLowerCase() !== fri && b.dayOfWeek.toLowerCase() === fri){
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return arr;
+}
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
