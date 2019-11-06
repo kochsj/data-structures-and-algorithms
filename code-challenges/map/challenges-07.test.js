@@ -13,7 +13,6 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 const forLoopTwoToThe = (arr) => {
   let temp = [];
   for(let idx in arr){
-    console.log(idx);
     temp.push(Math.pow(2, arr[idx]));
   }
   return temp;
@@ -40,7 +39,7 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  // Solution code here...
+  return arr.map(value => Math.pow(2, value));
 };
 
 /* ------------------------------------------------------------------------------------------------
