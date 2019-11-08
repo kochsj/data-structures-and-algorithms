@@ -161,11 +161,11 @@ const houseSize = (arr) => {
     sizes.push(this);
   }
   arr.forEach(value => {
-    let total = 0;
-    if(value.spouse === null){
+    let total = 1;
+    if(value.spouse !== null){
       total += 1+(value.children.length);
     } else {
-      total += 2+(value.children.length);
+      total += (value.children.length);
     }
     new Object(value.house, total);
   });
