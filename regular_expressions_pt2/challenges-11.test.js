@@ -9,7 +9,18 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePin = (pin) => {
-  // Solution code here...
+  if(typeof pin === 'string'){
+    let normalize = pin.split('')
+    return normalize.filter(num => {
+      if(!isNaN(num)){
+        return true;
+      } else {
+        return false;
+      }
+    }).length;
+  } else if (typeof pin === 'number'){
+    return (pin.toString().length === 4);
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
