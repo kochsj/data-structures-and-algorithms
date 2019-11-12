@@ -40,7 +40,36 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  let atSign = email.indexOf('@');
+  let arr = email.split('');
+  //.net, .com, .org
+  //no subdomains
+  //   let domain = /(.com)|(.net)|(.org)/gm
+  let domain = `${arr[arr.length-4]}${arr[arr.length-3]}${arr[arr.length-2]}${arr[arr.length-1]}`
+  if(atSign === -1){
+    return false;
+  } else {  
+    if(domain === '.com' || domain === '.net' || domain === '.org'){
+    //no other special characters
+      let regex = /[a-zA-Z@.]/gm
+      let temp = arr.forEach(val => {
+        if(val.match(regex) === null){
+          temp = false;}
+      });
+      //up to two words
+      if(temp !== false){
+        let words = email.split('.')
+        if(words.length > 3 ){
+          return false;
+        } else if(atSign === 0){
+          return false;
+        }else if(email[atSign-1] === '.'){
+          return false;
+        }else {return true}
+      }
+    } else {return false}}
+
+  //   if(arr.includes('!')|| arr.includes('#') || arr.includes('$') || arr.includes('%') || arr.includes('^')|| arr.includes('&') || arr.includes('*') || arr.includes('(') || arr.includes(')'))
 };
 
 /* ------------------------------------------------------------------------------------------------
