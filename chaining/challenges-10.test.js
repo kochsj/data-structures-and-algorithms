@@ -52,17 +52,11 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  let isNumber = input.map(value => {
+  return input.map(value => {
     return value.filter(num => typeof num === 'number')
-  });
-  let temp = isNumber.map(value => {
+  }).map(value => {
     return value.filter(num => num%5===0);
-  });
-  let answer = temp.map(value => {
-    return value.map(x => {
-      return Math.pow(2, x)});
-  });
-  return answer;
+  }).map(value => {return value.map(x => {return Math.pow(2, x)})});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -128,16 +122,13 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  let temp = data.map(value => {
+  return data.map(value => {
     if(value.gender === 'male'){
       return value.name;
     } else if(value.gender === 'female'){
       return value.name;
     }
-  });
-  let nameArr = temp.filter(name => typeof name === 'string');
-  let stringArr = nameArr.toString();
-  return stringArr.replace(/,/gi, ' and ');
+  }).filter(name => typeof name === 'string').toString().replace(/,/gi, ' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -147,7 +138,9 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  return data.map(value => {
+    return {name: value.name, height: value.height};
+  }).filter(person => person.height < 100).map(value => {return value.name}).reduce((acc, cur) => acc);
 };
 
 /* ------------------------------------------------------------------------------------------------
