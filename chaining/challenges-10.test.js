@@ -12,7 +12,12 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let answer = 0;
+  input.forEach(value => {
+    let temp = value.filter(x => x===target);
+    answer += temp.length;
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,7 +31,12 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  let answer = 0;
+  input.map(value => {
+    let temp = value.reduce((acc, cur) => acc + cur)
+    answer += temp;
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,7 +52,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  let isNumber = input.map(value => {
+    return value.filter(num => typeof num === 'number')
+  });
+  let temp = isNumber.map(value => {
+    return value.filter(num => num%5===0);
+  });
+  let answer = temp.map(value => {
+    return value.map(x => {
+      return Math.pow(2, x)});
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +128,16 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let temp = data.map(value => {
+    if(value.gender === 'male'){
+      return value.name;
+    } else if(value.gender === 'female'){
+      return value.name;
+    }
+  });
+  let nameArr = temp.filter(name => typeof name === 'string');
+  let stringArr = nameArr.toString();
+  return stringArr.replace(/,/gi, ' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
