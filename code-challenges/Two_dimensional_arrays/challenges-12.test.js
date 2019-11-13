@@ -1,5 +1,7 @@
 'use strict';
 
+// import { parse } from "@babel/parser";
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -90,7 +92,6 @@ const howManyTreats = (arr) => {
     if(object.store === 'Pet store'){
       object.items.forEach(item => {
         if(item.name === 'Treats'){
-          console.log('should be 24: '+item.quantity)
           answer = item.quantity;
         }
       })
@@ -221,7 +222,22 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let arr = [];
+  let answer = [];
+  let total;
+  let regex = /([0-9][,][0-9][,][0-9])/gm;
+  let parseIsh = str.match(regex);
+  parseIsh.forEach(index => {
+    arr.push(index.match(/[0-9]/gm));
+  })
+  arr.forEach(array => {
+    total = 0;
+    array.forEach(idx => {
+      total += (Number(idx))
+    })
+    answer.push(total);
+  })
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
