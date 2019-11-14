@@ -23,7 +23,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  let answer = []
+  arr.forEach(str => {
+    if(str.includes(':)')){
+      answer.push(str);
+    }
+  })
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
