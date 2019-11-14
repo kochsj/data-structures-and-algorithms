@@ -56,8 +56,16 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
-};
+  let answer = '';
+  if(str.length > 1){
+    for(let i = 0; i < str.length; i++){
+      if(i%2 === 1){
+        answer += str.substring(i, i+1);
+      }
+    }
+  }
+  return answer;
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -66,7 +74,11 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  return arr.every(string => {
+    if(string.includes(':)')){
+      return true;
+    } else {return false}
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
