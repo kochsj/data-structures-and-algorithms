@@ -87,7 +87,14 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let str = '';
+  arr.forEach(profile => {
+    if(profile.mass > 77){
+      str += `${profile.name} - `;
+    }
+  })
+  let answer = str.slice(0, (str.length-3));
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
