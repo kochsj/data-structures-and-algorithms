@@ -112,7 +112,43 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  if(property === 'name'){
+    let sortingArr = arr.map(obj => {
+      return obj.name;
+    })
+    let sortedArr = sortingArr.sort((a,b) => {
+      if(a < b){
+        return -1;
+      } else if(a > b){
+        return 1;
+      } else {return 0}
+    });
+    return sortedArr.map(prop => {
+      for(let i = 0; i < arr.length; i++){
+        if(arr[i].name === prop){
+          return arr[i];
+        }
+      }
+    })
+  } else if(property === 'price'){
+    let sortingArr = arr.map(obj => {
+      return obj.price;
+    })
+    let sortedArr = sortingArr.sort((a,b) => {
+      if(a < b){
+        return -1;
+      } else if(a > b){
+        return 1;
+      } else {return 0}
+    });
+    return sortedArr.map(prop => {
+      for(let i = 0; i < arr.length; i++){
+        if(arr[i].price === prop){
+          return arr[i];
+        }
+      }
+    })
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
