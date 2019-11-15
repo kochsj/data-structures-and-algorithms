@@ -143,7 +143,7 @@ const sortBy = (property, arr) => {
     });
     return sortedArr.map(prop => {
       for(let i = 0; i < arr.length; i++){
-        if(arr[i].price === prop){
+        if(arr[i].price === prop){``
           return arr[i];
         }
       }
@@ -164,7 +164,10 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  let regex = /(https:\/\/)/gm
+  if(url.match(regex)){
+    return true;
+  } else {return false;}
 };
 
 /* ------------------------------------------------------------------------------------------------
